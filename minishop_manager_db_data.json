@@ -1,0 +1,420 @@
+[
+  {
+    "model": "shop.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$6uM28XWOFX6ewyloJzjqmt$L+ZhofPylneoaL2iZS4sZu4ZMUNb4oIevfAdzOMn/eE=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin.user",
+      "first_name": "Admin",
+      "last_name": "Cool",
+      "email": "admin@minishop.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-01-01T12:00:00Z",
+      "is_employee": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "shop.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$6uM28XWOFX6ewyloJzjqmt$L+ZhofPylneoaL2iZS4sZu4ZMUNb4oIevfAdzOMn/eE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "john.doe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john@shop.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-02T12:00:00Z",
+      "is_employee": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "shop.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$QtPol3T7x9quBj4BnbnVwW$UwT4kihkRfSvQEWEeuqVKwMgis2ikKVZfJDBcQMvOKY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "jim.hopper",
+      "first_name": "Jim",
+      "last_name": "Hopper",
+      "email": "jim.hopper@shop.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T14:19:09Z",
+      "is_employee": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "shop.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "jonathan.byers",
+      "first_name": "Jonathan",
+      "last_name": "Byers",
+      "email": "jonathan.byers@shop.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T14:19:09Z",
+      "is_employee": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "shop.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "dustin.henderson",
+      "first_name": "Dustin",
+      "last_name": "Henderson",
+      "email": "dustin.henderson@shop.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-09T14:19:09Z",
+      "is_employee": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "shop.productcategory",
+    "pk": 1,
+    "fields": {
+      "name": "Chicken"
+    }
+  },
+  {
+    "model": "shop.productcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Beef"
+    }
+  },
+  {
+    "model": "shop.productcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Pork"
+    }
+  },
+  {
+    "model": "shop.productcategory",
+    "pk": 4,
+    "fields": {
+      "name": "Turkey"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 1,
+    "fields": {
+      "name": "Spicy Garlic Chicken",
+      "description": "Juicy chicken marinated in spicy garlic sauce",
+      "price": "250",
+      "stock_quantity": 50,
+      "category": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 2,
+    "fields": {
+      "name": "Honey BBQ Chicken Wings",
+      "description": "Chicken wings glazed with sweet honey BBQ sauce",
+      "price": "145",
+      "stock_quantity": 30,
+      "category": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 3,
+    "fields": {
+      "name": "Teriyaki Chicken Fillet",
+      "description": "Tender chicken fillet in classic teriyaki sauce",
+      "price": "275",
+      "stock_quantity": 22,
+      "category": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 4,
+    "fields": {
+      "name": "Beef Ribeye Steak",
+      "description": "Premium ribeye steak with rich beef flavor",
+      "price": "430",
+      "stock_quantity": 10,
+      "category": 2
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 5,
+    "fields": {
+      "name": "Garlic Rosemary Beef",
+      "description": "Slow-marinated beef with garlic and rosemary",
+      "price": "369.99",
+      "stock_quantity": 50,
+      "category": 2
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 6,
+    "fields": {
+      "name": "Sweet Chili Pork",
+      "description": "Pork slices in sweet and spicy chili sauce",
+      "price": "210",
+      "stock_quantity": 35,
+      "category": 3
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 7,
+    "fields": {
+      "name": "BBQ Pork Ribs",
+      "description": "Slow-cooked pork ribs with smoky BBQ glaze",
+      "price": "289.99",
+      "stock_quantity": 30,
+      "category": 3
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 8,
+    "fields": {
+      "name": "Garlic Rosemary Turkey",
+      "description": "Slow-marinated turkey with garlic and rosemary",
+      "price": "179.99",
+      "stock_quantity": 70,
+      "category": 4
+    }
+  },
+  {
+    "model": "shop.order",
+    "pk": 1,
+    "fields": {
+      "user": 4,
+      "status": "new",
+      "created_at": "2025-01-01T12:10:04Z"
+    }
+  },
+  {
+    "model": "shop.order",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "status": "processing",
+      "created_at": "2025-01-01T12:21:41Z"
+    }
+  },
+  {
+    "model": "shop.order",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "status": "completed",
+      "created_at": "2025-01-01T12:33:56Z"
+    }
+  },
+  {
+    "model": "shop.order",
+    "pk": 4,
+    "fields": {
+      "user": 5,
+      "status": "new",
+      "created_at": "2025-01-01T12:41:32Z"
+    }
+  },
+  {
+    "model": "shop.order",
+    "pk": 5,
+    "fields": {
+      "user": 2,
+      "status": "completed",
+      "created_at": "2025-01-01T12:43:20Z"
+    }
+  },
+  {
+    "model": "shop.order",
+    "pk": 6,
+    "fields": {
+      "user": 3,
+      "status": "failed",
+      "created_at": "2025-01-01T12:50:20Z"
+    }
+  },
+  {
+    "model": "shop.order",
+    "pk": 7,
+    "fields": {
+      "user": 5,
+      "status": "processing",
+      "created_at": "2025-01-01T13:32:21Z"
+    }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 1,
+    "fields": { "order": 1, "product": 1, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 2,
+    "fields": { "order": 1, "product": 3, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 3,
+    "fields": { "order": 1, "product": 6, "quantity": 3 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 4,
+    "fields": { "order": 1, "product": 8, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 5,
+    "fields": { "order": 2, "product": 2, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 6,
+    "fields": { "order": 2, "product": 4, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 7,
+    "fields": { "order": 2, "product": 8, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 8,
+    "fields": { "order": 3, "product": 1, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 9,
+    "fields": { "order": 3, "product": 5, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 10, "fields": { "order": 3, "product": 7, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 11, "fields": { "order": 3, "product": 8, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 12,
+    "fields": { "order": 4, "product": 8, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 13,
+    "fields": { "order": 4, "product": 6, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 14,
+    "fields": { "order": 4, "product": 3, "quantity": 3 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 15,
+    "fields": { "order": 5, "product": 4, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 16,
+    "fields": { "order": 5, "product": 7, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 17,
+    "fields": { "order": 5, "product": 2, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 18,
+    "fields": { "order": 5, "product": 6, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 19,
+    "fields": { "order": 5, "product": 1, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 20,
+    "fields": { "order": 5, "product": 3, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 21,
+    "fields": { "order": 6, "product": 7, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 22,
+    "fields": { "order": 6, "product": 1, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 23,
+    "fields": { "order": 6, "product": 2, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 24,
+    "fields": { "order": 6, "product": 5, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 25,
+    "fields": { "order": 7, "product": 8, "quantity": 1 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 26,
+    "fields": { "order": 7, "product": 6, "quantity": 2 }
+  },
+  {
+    "model": "shop.orderitem",
+    "pk": 27,
+    "fields": { "order": 7, "product": 3, "quantity": 1 }
+  },
+  {
+    "model": "accounts.supportrequest",
+    "pk": 1,
+    "fields": {
+      "title": "Order issue",
+      "content": "I have a problem with my order.",
+      "created_at": "2024-01-06T10:30:00Z",
+      "is_processed": false,
+      "user": 2
+    }
+  }
+]

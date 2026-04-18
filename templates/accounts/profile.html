@@ -1,0 +1,63 @@
+{% extends "layouts/base-presentation.html" %}
+{#{% load crispy_forms_filters %}#}
+
+{% block content %}
+  <div class="container mt-sm-5">
+    <div class="page-header section-height-50 my-sm-3 mb-3 border-radius-xl"
+         style="background-image: url('https://unsplash.com/photos/IVj7aVIi0zM/download?force=true');">
+      <span class="mask bg-gradient-dark"></span>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ms-lg-5">
+            <h1 class="text-white">My Account</h1>
+            <p class="lead text-white opacity-8">
+              Personal information and account status
+            </p>
+            {% if user.is_authenticated %}
+              <a href="{% url 'accounts:account-update' %}" class="btn bg-gradient-primary">Change info</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+
+      <div class="col-lg-6 col-md-8">
+        <div class="card shadow-lg border-radius-xl">
+
+          <div class="card-body p-4">
+
+            <p class="mb-2">
+              <strong>Username:</strong>
+              {{ request.user.username }}
+            </p>
+
+            <p class="mb-2">
+              <strong>Full name:</strong>
+              {{ request.user.get_full_name|default:"None" }}
+            </p>
+
+            <p class="mb-4">
+              <strong>Email:</strong>
+              {{ request.user.email|default:"None" }}
+            </p>
+
+            <hr>
+
+            {% if request.user.is_staff or request.user.is_employee %}
+              <span class="badge bg-gradient-info">Staff</span>
+            {% else %}
+              <span class="badge bg-gradient-success">Customer</span>
+            {% endif %}
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

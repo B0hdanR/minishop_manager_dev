@@ -1,0 +1,62 @@
+{% extends "layouts/base-presentation.html" %}
+{% block content %}
+<section class="pt-lg-7 pt-5">
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-5 col-md-8 order-2 order-md-2 order-lg-1">
+      <div class="position-relative ms-lg-5 mb-0 mb-md-7 mb-lg-0 d-none d-md-block d-lg-block d-xl-block h-75">
+        <div class="bg-gradient-primary w-100 h-100 border-radius-xl position-absolute d-lg-block d-none" alt=""></div>
+        <img src="{{ ASSETS_ROOT }}/img/curved-images/curved11.jpg" class="w-100 border-radius-xl mt-6 ms-lg-5 position-relative z-index-5" alt="{{ object.name }}">
+      </div>
+    </div>
+
+    <div class="col-lg-5 col-md-12 ms-auto order-1 order-md-1 order-lg-1">
+      <div class="p-3 pt-0">
+        <div class="icon icon-shape bg-gradient-primary rounded-circle shadow text-center mb-4">
+          <i class="ni ni-building"></i>
+        </div>
+        <h4 class="text-gradient text-primary mb-0">
+          {{ object.category.name }}
+        </h4>
+        <h2>
+          {{ object.name }}
+        </h2>
+        <h4 class="mb-4">
+          {{ object.description|default:"Description missing." }}
+        </h4>
+        <h4>
+          Price: {{ object.price }}
+        </h4>
+        <p>
+          {% if object.stock_quantity > 0 %}
+          <h4 class="text-success"> {{ object.stock_quantity }} pieces</h4>
+          <div class="mt-auto">
+            <form method="post" action="{% url 'shop:add-to-cart' pk=product.id%}?next={{ request.get_full_path|urlencode }}">
+              {% csrf_token %}
+                <div class="mb-2">
+                  <input type="number" name="quantity" value="1" class="form-control">
+                </div>
+                <button type="submit" class="btn bg-gradient-primary w-100">
+                  Add to cart
+                </button>
+            </form>
+          </div>
+          {% else %}
+          <h4 class="text-danger"> Not available </h4>
+          {% endif %}
+        </p>
+        <a href="{% url 'shop:product-list' %}" class="btn bg-gradient-secondary icon-move-right">
+          Go to products
+          <i class="fas fa-arrow-right text-sm ms-1"></i>
+        </a>
+        <a href="{{ back_url|default:'/' }}" class="btn bg-gradient-secondary icon-move-right">
+          Back
+          <i class="fas fa-arrow-right text-sm ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,109 @@
+
+  <footer class="footer pt-5 mt-5">
+    <hr class="horizontal dark mb-5">
+    <div class="container">
+      <div class=" row">
+        <div class="col-md-3 mb-4 ms-auto">
+          <div>
+            <h6 class="text-gradient text-primary font-weight-bolder">Shop Management</h6>
+            <p class="text-sm opacity-8">Special store</p>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-6 col-6 mb-4">
+          <div>
+            <h6 class="text-gradient text-primary text-sm">Catalog</h6>
+            <ul class="flex-column ms-n3 nav">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'shop:productcategory-list' %}">
+                  Categories
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'shop:product-list' %}">
+                  Products
+                </a>
+              </li>
+              {% if request.user.is_staff or request.user.is_employee %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'shop:order-list' %}">
+                    Orders
+                  </a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'accounts:myorder-list' %}">
+                    My orders
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-6 col-6 mb-4">
+          <h6 class="text-gradient text-primary text-sm">Account</h6>
+          <ul class="flex-column ms-n3 nav">
+            {% if user.is_authenticated %}
+              {% if request.user.is_staff or request.user.is_employee %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'accounts:user-list' %}">Users</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'accounts:profile' %}">My account</a>
+                </li>
+              {% endif %}
+            <li class="nav-item">
+              <form method="post" action="{% url 'accounts:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="nav-link btn btn-link">Logout</button>
+              </form>
+            </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:login' %}">
+                  Login
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:register' %}">
+                  Register
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-6 col-6 mb-4">
+          <div>
+            <h6 class="text-gradient text-primary text-sm">Support</h6>
+            <ul class="flex-column ms-n3 nav">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:support' %}">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-6 col-6 mb-4 me-auto">
+          <div>
+            <h6 class="text-gradient text-primary text-sm">Legal</h6>
+            <ul class="flex-column ms-n3 nav">
+              <li class="nav-item">
+                <span class="nav-link text-muted">
+                  2025 Shop Project
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="text-center">
+            <p class="my-4 text-sm">
+              Built with Django
+              - Coded by Me
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>

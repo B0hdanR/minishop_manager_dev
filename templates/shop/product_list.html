@@ -1,0 +1,112 @@
+{% extends "layouts/base-presentation.html" %}
+{#{% load crispy_forms_filters %}#}
+
+{% block content %}
+  <div class="container mt-sm-5">
+    <div class="page-header section-height-50 my-sm-3 mb-3 border-radius-xl" style="background-image: url('https://unsplash.com/photos/oPBjWBCcAEo/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mjd8fGJvd2wlMjBsdW5jaHxlbnwwfHx8fDE3NDU1MzIxMjJ8MA&force=true');">
+      <span class="mask bg-gradient-dark"></span>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ms-lg-5">
+            <h1 class="text-white">Products</h1>
+            <p class="lead text-white opacity-8">Browse all available products in the shop.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h5 class="mb-3">Filter products</h5>
+    <form method="get" class="row g-2 mb-4" >
+      <div class="col-md-3">
+        {{  filter_form.name }}
+      </div>
+      <div class="col-md-3">
+        {{  filter_form.category  }}
+      </div>
+      <div class="col-md-2">
+        {{  filter_form.price_min  }}
+      </div>
+      <div class="col-md-2">
+        {{  filter_form.price_max  }}
+      </div>
+      <div class="col-md-1">
+        <button class="btn bg-gradient-primary">
+          🔎
+        </button>
+      </div>
+      <div class="col-md-1">
+        <a href="{% url 'shop:product-list' %}" class="btn bg-gradient-primary">
+          Reset
+        </a>
+      </div>
+    </form>
+    {% if request.user.is_staff or request.user.is_employee %}
+      <div class="container row">
+        <a href="{% url 'shop:product-create' %}" class="btn bg-gradient-primary">
+          Add Product
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="container">
+    <div class="row">
+      {% for product in product_list %}
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <div class="info-horizontal border-radius-xl p-5 h-100 d-flex flex-column" style="background: linear-gradient(135deg, #4a6fa5, #d3d3d3); color: black;">
+
+            <div class="icon">
+              <svg class="text-white" width="25px" height="25px" viewBox="0 0 46 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>delivery-fast</title>
+              </svg>
+            </div>
+
+            <div class="description ps-5">
+              <h5 class="text-white">
+                  {{ product.name }}
+              </h5>
+              <p class="text-white">
+                  Category: {{ product.category.name }}
+              </p>
+              <p class="text-white">
+                  Price: {{ product.price }}
+              </p>
+              <p class="text-white">
+                  In stock: {{ product.stock_quantity }}
+              </p>
+
+              <a href="{% url 'shop:product-detail' pk=product.id %}" class="btn btn-outline-light btn-sm mb-3">
+                View details
+                <i class="fas fa-arrow-right text-sm ms-1"></i>
+              </a>
+
+              {% if request.user.is_staff or request.user.is_employee %}
+                <div class="d-flex gap-2 mb-3">
+                  <a href="{% url 'shop:product-update' pk=product.id %}" class="btn bg-gradient-primary">
+                    Edit
+                  </a>
+                  <a href="{% url 'shop:product-delete' pk=product.id %}" class="btn btn-danger">
+                    Delete
+                  </a>
+                </div>
+              {% endif %}
+
+              <div class="mt-auto">
+                <form method="post" action="{% url 'shop:add-to-cart' pk=product.id%}?next={{ request.get_full_path|urlencode }}">
+                  {% csrf_token %}
+                    <div class="mb-2">
+                      <input type="number" name="quantity" value="1" class="form-control">
+                    </div>
+                    <button type="submit" class="btn bg-gradient-primary w-100">
+                      Add to cart
+                    </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-center">No products found.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "layouts/base-presentation.html" %}
+
+{% block content %}
+  <div class="container mt-sm-5">
+    <div class="page-header section-height-50 my-sm-3 mb-3 border-radius-xl" style="background-image: url('https://unsplash.com/photos/IVj7aVIi0zM/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzQ1NTIyMzY0fA&force=true');">
+      <span class="mask bg-gradient-dark"></span>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ms-lg-5">
+            <h1 class="text-white">My cart</h1>
+            <p class="lead text-white opacity-8">Your current order</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    {% if order and order.items.all %}
+      <div class="row">
+        {% for item in order.items.all %}
+          <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+            <div class="info-horizontal border-radius-xl p-5" style="background: linear-gradient(135deg, #4a6fa5, #d3d3d3); color: black;">
+              <div class="icon">
+                <svg class="text-white" width="25px" height="25px" viewBox="0 0 46 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <title>delivery-fast</title>
+                </svg>
+              </div>
+              <div class="description ps-5">
+                <h5 class="text-white">{{ item.product.name }}</h5>
+                <p class="text-sm">Price: {{ item.product.price }}</p>
+                <p class="text-sm">In stock: {{ item.product.stock_quantity }}</p>
+
+                <div class="mt-auto">
+                  <form method="post" action="{% url 'shop:cart-update' pk=item.id %}">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                      <input type="number" name="quantity" value="{{ item.quantity }}" class="form-control w-100" style="width: 80px;">
+                    </div>
+                    <button type="submit" name="action" value="set" class="btn bg-gradient-primary w-100">
+                      Save
+                    </button>
+                  </form>
+                  <div class="d-flex justify-content-end">
+                    <form method="post" action="{% url 'shop:cart-remove' pk=item.id %}">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+      {% if order %}
+          <div class="text-end">
+              <h5 class="mb-0">Total: {{ order.get_total_price }}</h5>
+          </div>
+      {% endif %}
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="{% url 'shop:product-list' %}" class="btn bg-gradient-primary">
+          Go to products
+        </a>
+        {% if order %}
+          <div class="d-flex justify-content-end">
+            <form method="post" action="{% url 'shop:order-confirm' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn bg-gradient-primary">
+                Confirm order
+              </button>
+            </form>
+          </div>
+        {% endif %}
+      </div>
+    {% else %}
+      <p class="text-center">Cart is empty.</p>
+      <div class="text-center">
+        <a href="{% url 'shop:product-list' %}" class="btn bg-gradient-primary">
+          Go to products
+        </a>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

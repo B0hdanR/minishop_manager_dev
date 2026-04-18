@@ -1,0 +1,81 @@
+{% extends "layouts/base-presentation.html" %}
+
+{% block content %}
+  <section class="pt-lg-7 pt-5">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-5 col-md-8 order-2 order-md-2 order-lg-1">
+          <div class="position-relative ms-lg-5 mb-0 mb-md-7 mb-lg-0 d-none d-md-block d-lg-block d-xl-block h-75">
+            <div class="bg-gradient-primary w-100 h-100 border-radius-xl position-absolute d-lg-block d-none" alt=""></div>
+            <img src="{{ ASSETS_ROOT }}/img/curved-images/curved11.jpg" class="w-100 border-radius-xl mt-6 ms-lg-5 position-relative z-index-5" alt="{{ object.name }}">
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-md-12 ms-auto order-1 order-md-1 order-lg-1">
+          <div class="p-3 pt-0">
+            <div class="icon icon-shape bg-gradient-primary rounded-circle shadow text-center mb-4">
+              <i class="ni ni-building"></i>
+            </div>
+            <h2>
+              {{ productcategory.name }}
+            </h2>
+
+            <a href="{% url 'shop:productcategory-list' %}" class="btn bg-gradient-secondary icon-move-right">
+              Go to categories
+              <i class="fas fa-arrow-right text-sm ms-1"></i>
+            </a>
+            <a href="{{ back_url|default:'/' }}" class="btn bg-gradient-secondary icon-move-right">
+              Back
+              <i class="fas fa-arrow-right text-sm ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ms-8">
+      <h3>Products in the category</h3>
+    </div>
+    <div class="container">
+      <div class="row">
+        {% for product in products %}
+          <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+            <div class="info-horizontal border-radius-xl p-5 h-100 d-flex flex-column" style="background: linear-gradient(135deg, #4a6fa5, #d3d3d3); color: black;">
+
+              <div class="description ps-5">
+                <h5 class="text-white">
+                    {{ product.name }}
+                </h5>
+                <p class="text-white">
+                    Price: {{ product.price }}
+                </p>
+                <p class="text-white">
+                    In stock: {{ product.stock_quantity }}
+                </p>
+
+                <a href="{% url 'shop:product-detail' pk=product.id %}" class="btn btn-outline-light btn-sm mb-3">
+                  View details
+                  <i class="fas fa-arrow-right text-sm ms-1"></i>
+                </a>
+
+                <div class="mt-auto">
+                  <form method="post" action="{% url 'shop:add-to-cart' pk=product.id%}">
+                    {% csrf_token %}
+                      <div class="mb-2">
+                        <input type="number" name="quantity" value="1" class="form-control">
+                      </div>
+                      <button type="submit" class="btn bg-gradient-primary w-100">
+                        Add to cart
+                      </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% empty %}
+          <p class="text-center">No products in this category.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
